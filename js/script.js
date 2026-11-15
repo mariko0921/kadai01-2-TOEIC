@@ -59,6 +59,7 @@ function loadQuestions() {
             }
 
             if (questions.length > 0) {
+                shuffleQuestions(); // ★追加：問題をランダムに並べ替える
                 showQuestion();
             } else {
                 $("#question").text("問題データがありません。");
@@ -222,6 +223,20 @@ $("#next").on("click", function() {
         $("#next").prop("hidden", true);
     }
 });
+
+
+ // 問題の順番をランダムに並べ替える関数
+function shuffleQuestions() {
+
+    for (let i = questions.length - 1; i > 0; i--) {
+
+        // 0〜iの中からランダムに番号を選ぶ
+        const j = Math.floor(Math.random() * (i + 1));
+
+        // 2つの問題の場所を交換する
+        [questions[i], questions[j]] = [questions[j], questions[i]];
+    }
+}
 
 
 
