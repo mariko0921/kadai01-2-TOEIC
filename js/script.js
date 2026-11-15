@@ -136,9 +136,11 @@ function checkAnswer(selected) {
 
         } else if (streak === 30) {
             $("#celebration").text("🎆 30問連続正解！おめでとう！");
+            showFireworkEffect(); // ★追加！
 
         } else if (streak === 50) {
             $("#celebration").text("👑 TOEICの神！！！");
+            showGodEffect(); // ★追加！
         }
 
     // 時間切れの場合
@@ -242,6 +244,50 @@ function showClapEffect() {
         $("#clap-effect").hide();
     }, 3000);
 }
+
+
+// 花火GIFを表示する関数
+function showFireworkEffect() {
+
+    // 花火の拡大アニメーションをリセット
+    $("#firework-effect img").css("animation", "none");
+
+    // アニメーションを再設定
+    $("#firework-effect img")[0].offsetHeight;
+    $("#firework-effect img").css("animation", "");
+
+    // 花火を画面全体に表示
+    $("#firework-effect").css("display", "flex");
+
+    // 4秒後に非表示にする
+    setTimeout(function() {
+        $("#firework-effect").hide();
+    }, 4000);
+}
+
+
+
+// TOEICの神GIFを表示する関数
+function showGodEffect() {
+
+    // GIFの拡大アニメーションをリセット
+    $("#god-effect img").css("animation", "none");
+
+    // 拡大アニメーションを再設定
+    $("#god-effect img")[0].offsetHeight;
+    $("#god-effect img").css("animation", "");
+
+    // TOEICの神を表示
+    $("#god-effect").css("display", "flex");
+
+    // 4秒後に非表示にする
+    setTimeout(function() {
+        $("#god-effect").hide();
+    }, 4000);
+}
+
+
+
 
 // スプレッドシートから問題を読み込む
 loadQuestions();
